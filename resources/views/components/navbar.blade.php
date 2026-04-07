@@ -3,12 +3,8 @@
         <div class="flex justify-between h-20 items-center">
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="flex items-center gap-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                    <img src="{{ asset('assets/images/logo.png') }}" 
-                         alt="Logo" 
-                         class="h-10 w-auto" 
-                         onerror="this.style.display='none'">
-                    <span>JURAGAN<span class="text-primary-600 dark:text-primary-500">OTOMOTIF</span></span>
+                <a href="/" class="group transition-transform hover:scale-105 active:scale-95">
+                    <x-logo-admin class="text-2xl" />
                 </a>
             </div>
             
@@ -16,8 +12,8 @@
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="/" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Beranda</a>
                 <a href="/katalog" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Katalog Mobil</a>
-                <a href="#" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Layanan Kami</a>
-                <a href="#" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Tentang Kami</a>
+                <a href="/layanan" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Layanan Kami</a>
+                <a href="/tentang" class="text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">Tentang Kami</a>
             </div>
             
             <div class="hidden md:flex items-center space-x-4">
@@ -38,17 +34,29 @@
                         </button>
                         <div x-show="dropdownOpen" class="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 py-2 overflow-hidden" style="display: none;">
                             <a href="/dashboard" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer">
-                                <span>👤</span> Dasbor Saya
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                Dasbor Saya
                             </a>
                             @if(auth()->user()->email === 'admin@juragan.com')
                                 <a href="/admin" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer">
-                                    <span>⚙️</span> Admin Panel
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9" />
+                                    </svg>
+                                    Admin Panel
                                 </a>
                             @endif
                             <div class="border-t border-slate-100 dark:border-slate-700 mt-1 pt-1">
                                 <form method="POST" action="/logout">
                                     @csrf
-                                    <button type="submit" class="w-full text-left flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-slate-700 cursor-pointer"><span>🚪</span> Keluar</button>
+                                    <button type="submit" class="w-full text-left flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-slate-700 cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                                        </svg>
+                                        Keluar
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -83,13 +91,20 @@
         <div class="px-4 pt-2 pb-6 space-y-1">
             <a href="/" class="block px-3 py-3 rounded-md text-base font-medium text-primary-600 bg-primary-50 dark:bg-slate-800 dark:text-primary-400">Beranda</a>
             <a href="/katalog" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">Katalog Mobil</a>
-            <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">Layanan Kami</a>
-            <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">Tentang Kami</a>
+            <a href="/layanan" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">Layanan Kami</a>
+            <a href="/tentang" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">Tentang Kami</a>
             
             <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                 @auth
                     <div class="px-3 py-2 text-slate-600 dark:text-slate-400">Masuk sebagai {{ auth()->user()->name }}</div>
-                    <a href="/dashboard" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">👤 Dasbor Saya</a>
+                    <a href="/dashboard" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-50 dark:hover:bg-slate-800">
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                            </svg>
+                            Dasbor Saya
+                        </div>
+                    </a>
                     @if(auth()->user()->email === 'admin@juragan.com')
                         <a href="/admin" class="block w-full text-center px-4 py-3 mt-2 rounded-md shadow-sm text-base font-medium text-white bg-slate-800 hover:bg-slate-700">Admin Panel</a>
                     @endif

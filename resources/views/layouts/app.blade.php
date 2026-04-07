@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>{{ $title ?? 'Juragan Otomotif - Solusi Jual Beli Mobil Terpercaya' }}</title>
+        <title>@yield('title', 'Juragan Otomotif - Solusi Jual Beli Mobil Terpercaya')</title>
         
         <!-- Favicon -->
         <link rel="icon" href="{{ asset('assets/images/logo.png') }}" type="image/png">
@@ -28,7 +28,7 @@
 
         <!-- Main Content -->
         <main class="flex-grow">
-            {{ $slot }}
+            @yield('content')
         </main>
 
         <!-- Footer Component -->
@@ -38,6 +38,7 @@
         <livewire:auth-modal />
         
         @livewireScripts
+        @stack('scripts')
         
         {{-- Custom Global SweetAlert Handler --}}
         <script>

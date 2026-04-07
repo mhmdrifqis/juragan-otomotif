@@ -49,7 +49,11 @@ class UserDashboard extends Component
             'whatsapp_number' => $this->whatsapp_number,
         ]);
 
-        $this->profileSuccess = true;
+        $this->dispatch('swal:message', [
+            'title' => 'Profil Diperbarui!',
+            'text' => 'Informasi profil Anda telah berhasil disimpan.',
+            'icon' => 'success'
+        ]);
         $this->dispatch('profileUpdated');
     }
 
@@ -74,7 +78,12 @@ class UserDashboard extends Component
         $this->current_password = '';
         $this->new_password = '';
         $this->new_password_confirmation = '';
-        $this->passwordSuccess = true;
+        
+        $this->dispatch('swal:message', [
+            'title' => 'Password Diganti!',
+            'text' => 'Kata sandi Anda telah berhasil diubah.',
+            'icon' => 'success'
+        ]);
     }
 
     public function removeWishlist($carId)
@@ -89,6 +98,12 @@ class UserDashboard extends Component
         \App\Models\Booking::where('user_id', Auth::id())
             ->where('id', $id)
             ->delete();
+
+        $this->dispatch('swal:message', [
+            'title' => 'Riwayat Dihapus!',
+            'text' => 'Data booking telah dihapus dari riwayat Anda.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

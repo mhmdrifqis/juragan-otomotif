@@ -1,11 +1,17 @@
 <div>
-    <!-- Catalog Header with Glassmorphism -->
-    <div class="bg-primary-900 overflow-hidden relative pb-16 pt-24 lg:pt-32">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-800 to-indigo-900"></div>
+    <!-- Catalog Header with Premium Design -->
+    <div class="relative bg-gradient-to-br from-slate-900 to-primary-900 overflow-hidden pt-24 pb-20">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-            <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">Katalog <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mobil Elit</span></h1>
-            <p class="text-primary-100 max-w-2xl mx-auto text-lg">Temukan kendaraan impian Anda dengan filter pencarian cerdas kami. Seluruh unit siap test drive.</p>
+            <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+                Katalog <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">Mobil Elit</span>
+            </h1>
+            <p class="text-primary-100 max-w-2xl mx-auto text-lg leading-relaxed">
+                Temukan kendaraan impian Anda dengan filter pencarian cerdas kami. Seluruh unit siap test drive.
+            </p>
         </div>
     </div>
 
@@ -19,10 +25,12 @@
                 <div class="lg:col-span-2">
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Pencarian Bebas</label>
                     <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span class="text-slate-400">🔍</span>
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
                         </div>
-                        <input wire:model.live.debounce.300ms="search" type="text" class="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-slate-600 rounded-xl leading-5 bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-shadow shadow-sm" placeholder="Contoh: Porsche 911...">
+                        <input wire:model.live.debounce.300ms="search" type="text" class="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-slate-600 rounded-xl leading-5 bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-shadow shadow-sm" placeholder="Cari Mobil Impian Anda...">
                     </div>
                 </div>
 
@@ -83,8 +91,11 @@
                         @if($car->images->count() > 0)
                             <img src="{{ Storage::url($car->images->first()->image_path) }}" alt="{{ $car->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         @else
-                            <div class="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-600">
-                                🏙️ No Image
+                            <div class="w-full h-full flex flex-col items-center justify-center text-slate-300 dark:text-slate-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mb-2 opacity-20">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.015h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                </svg>
+                                <span class="text-xs font-medium uppercase tracking-wider">No Image</span>
                             </div>
                         @endif
                         
@@ -122,8 +133,19 @@
                         
                         <!-- Specs small -->
                         <div class="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-4 gap-3 bg-slate-50 dark:bg-slate-900/50 p-2 rounded-xl">
-                            <div class="flex items-center" title="Transmisi"><span class="mr-1">⚙️</span> {{ $car->transmission }}</div>
-                            <div class="flex items-center" title="Jarak Tempuh"><span class="mr-1">🛣️</span> {{ number_format($car->mileage ?? 0) }} km</div>
+                            <div class="flex items-center" title="Transmisi">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9" />
+                                </svg> 
+                                {{ $car->transmission }}
+                            </div>
+                            <div class="flex items-center" title="Jarak Tempuh">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-10.5V15m-10.5 6h15a2.25 2.25 0 0 0 2.25-2.25V5.25a2.25 2.25 0 0 0-2.25-2.25h-15a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 4.5 21Z" />
+                                </svg> 
+                                {{ number_format($car->mileage ?? 0) }} km
+                            </div>
                         </div>
 
                         <!-- Spacer -->
@@ -135,8 +157,10 @@
                                 <p class="text-xs text-slate-400">Harga</p>
                                 <p class="text-xl font-black text-slate-900 dark:text-white">Rp {{ number_format($car->price, 0, ',', '.') }}</p>
                             </div>
-                            <a href="{{ route('car.detail', $car->slug) }}" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 transition-colors shadow-sm cursor-pointer">
-                                ➔
+                            <a href="{{ route('car.detail', $car->slug) }}" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 transition-colors shadow-sm cursor-pointer group/arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -145,29 +169,22 @@
             </div>
 
             <!-- Pagination -->
-            <div class="mt-16 custom-pagination">
-                {{ $cars->links() }}
+            <div class="mt-16">
+                {{ $cars->links('vendor.pagination.premium') }}
             </div>
         @else
             <!-- Empty State -->
             <div class="text-center py-24 bg-white/50 dark:bg-slate-800/50 rounded-3xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
-                <div class="text-6xl mb-4">🕵️‍♂️</div>
+                <div class="text-slate-400 mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0 0 12.016 15a4.486 4.486 0 0 0-3.198 1.318M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75s.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Tidak ditemukan</h3>
                 <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto">Kami tidak dapat menemukan mobil dengan filter yang Anda pilih. Coba sesuaikan ulang pencarian Anda.</p>
-                <button wire:click="clearFilters" class="mt-6 px-6 py-2 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-full transition-colors shadow-lg shadow-primary-600/30">Reset Filter</button>
+                <button wire:click="clearFilters" class="mt-6 px-6 py-2 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-full transition-colors shadow-lg shadow-primary-600/30 cursor-pointer">Reset Filter</button>
             </div>
         @endif
     </div>
 
-    <style>
-        .custom-pagination nav > div:first-child { display: none !important; }
-        @media (min-width: 640px) { .custom-pagination nav > div:first-child { display: flex !important; } }
-        .custom-pagination nav span, .custom-pagination nav a { border-radius: 12px !important; margin: 0 2px !important; transition: all 0.2s !important; }
-        .custom-pagination nav a:hover { background-color: #4f46e5 !important; color: white !important; }
-        .custom-pagination nav span[aria-current="page"] > span { background-color: #4f46e5 !important; color: white !important; border-color: #4f46e5 !important; }
-        .dark .custom-pagination nav p, .dark .custom-pagination nav span, .dark .custom-pagination nav a, .dark .custom-pagination nav svg { color: #cbd5e1 !important; }
-        .dark .custom-pagination nav .bg-white { background-color: #1e293b !important; border-color: #334155 !important; }
-        .dark .custom-pagination nav a:hover { background-color: #6366f1 !important; color: white !important; }
-        .custom-pagination nav a, .custom-pagination nav button, .custom-pagination nav svg { cursor: pointer !important; }
-    </style>
 </div>

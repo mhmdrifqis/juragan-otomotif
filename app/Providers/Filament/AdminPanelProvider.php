@@ -33,8 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->profile()
             // Branding
             ->brandName('Juragan Otomotif')
-            ->brandLogo(asset('assets/images/logo.png'))
+            ->brandLogo(fn () => view('components.logo-admin'))
             ->brandLogoHeight('2.5rem')
+            ->favicon(asset('assets/images/logo.png'))
             // Navigation
             ->sidebarCollapsibleOnDesktop()
             // Theme & UI

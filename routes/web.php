@@ -10,6 +10,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/layanan', function () {
+    return view('layanan');
+})->name('layanan');
+
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
+
+Route::view('/syarat-ketentuan', 'pages.terms')->name('terms');
+Route::view('/kebijakan-privasi', 'pages.privacy')->name('privacy');
+
 Route::get('/katalog', CarCatalog::class)->name('katalog');
 Route::get('/katalog/{slug}', CarDetail::class)->name('car.detail');
 

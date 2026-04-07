@@ -16,7 +16,7 @@
              class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transform transition-all">
             
             <!-- Close Button -->
-            <button @click="$wire.close()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors z-10">
+            <button @click="$wire.close()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors z-10 cursor-pointer">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
@@ -24,6 +24,9 @@
             <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-primary-500/20 to-blue-600/20 blur-xl"></div>
 
             <div class="relative p-8">
+                <div class="flex justify-center mb-6">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="Juragan Otomotif" class="h-12 w-auto drop-shadow-xl">
+                </div>
                 <div class="text-center mb-8">
                     <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                         {{ $isLogin ? 'Selamat Datang Kembali' : 'Bergabung Bersama Kami' }}
@@ -71,7 +74,7 @@
                     @endif
 
                     <div class="pt-4">
-                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 transition-all">
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 transition-all cursor-pointer">
                             <span wire:loading.remove wire:target="submit">
                                 {{ $isLogin ? 'Masuk' : 'Daftar Sekarang' }}
                             </span>
@@ -85,7 +88,7 @@
                 <div class="mt-6 text-center">
                     <p class="text-sm text-slate-500 dark:text-slate-400">
                         {{ $isLogin ? 'Belum punya akun?' : 'Sudah punya akun?' }}
-                        <button wire:click="toggleMode" type="button" class="font-medium text-primary-600 hover:text-primary-500 transition-colors">
+                        <button wire:click="toggleMode" type="button" class="font-medium text-primary-600 hover:text-primary-500 transition-colors cursor-pointer">
                             {{ $isLogin ? 'Daftar di sini' : 'Masuk di sini' }}
                         </button>
                     </p>

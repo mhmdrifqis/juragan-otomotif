@@ -95,7 +95,11 @@
                 <!-- Description Card -->
                 <div class="mt-8 bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
                     <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-                        <span class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-3 text-sm">📝</span>
+                        <span class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-4 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>
+                        </span>
                         Deskripsi Kendaraan
                     </h3>
                     <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -119,27 +123,58 @@
                     <!-- Specs List -->
                     <ul class="space-y-4 mb-8">
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">📅</span> Tahun</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                </svg>
+                                Tahun
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ $car->year }}</span>
                         </li>
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">⚙️</span> Transmisi</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9" />
+                                </svg>
+                                Transmisi
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ $car->transmission }}</span>
                         </li>
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">🚗</span> Tipe Bahan Bakar</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+                                </svg>
+                                Tipe Bahan Bakar
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ $car->fuel_type ?? '-' }}</span>
                         </li>
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">⚡</span> Kapasitas Mesin</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                                </svg>
+                                Kapasitas Mesin
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ $car->engine_capacity ?? '-' }} CC</span>
                         </li>
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">🛣️</span> Odometer</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-10.5V15m-10.5 6h15a2.25 2.25 0 0 0 2.25-2.25V5.25a2.25 2.25 0 0 0-2.25-2.25h-15a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 4.5 21Z" />
+                                </svg>
+                                Odometer
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ number_format($car->mileage ?? 0) }} KM</span>
                         </li>
                         <li class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl">
-                            <span class="text-slate-500 dark:text-slate-400 flex items-center"><span class="w-5 mr-2">🎨</span> Warna</span>
+                            <span class="text-slate-500 dark:text-slate-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-4 text-primary-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 3.405-1.622m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 3.405-1.622m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m0 0a15.998 15.998 0 0 0-3.388-1.62m5.043.025a15.994 15.994 0 0 1-1.622 3.395m-3.42-3.42a15.995 15.995 0 0 0-3.405 1.622m5.043.025a15.994 15.994 0 0 1-1.622 3.395m0 0a15.998 15.998 0 0 0 3.388 1.62m-5.043-.025a15.994 15.994 0 0 1-1.622-3.395" />
+                                </svg>
+                                Warna
+                            </span>
                             <span class="font-bold text-slate-900 dark:text-white">{{ $car->color ?? '-' }}</span>
                         </li>
                     </ul>
