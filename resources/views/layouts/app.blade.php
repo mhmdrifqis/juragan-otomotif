@@ -85,6 +85,19 @@
                     }
                 });
             });
+
+            // Trigger session messages
+            @if(session('success'))
+                window.dispatchEvent(new CustomEvent('swal:message', {
+                    detail: { title: 'Berhasil!', text: "{{ session('success') }}", icon: 'success' }
+                }));
+            @endif
+
+            @if(session('error'))
+                window.dispatchEvent(new CustomEvent('swal:message', {
+                    detail: { title: 'Ups!', text: "{{ session('error') }}", icon: 'error' }
+                }));
+            @endif
         </script>
     </body>
 </html>

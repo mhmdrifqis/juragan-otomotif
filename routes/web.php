@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\CarCatalog;
 use App\Livewire\CarDetail;
-use App\Livewire\UserDashboard;
+// App imports eliminated UserDashboard as it is being split
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -24,8 +24,13 @@ Route::view('/kebijakan-privasi', 'pages.privacy')->name('privacy');
 Route::get('/katalog', CarCatalog::class)->name('katalog');
 Route::get('/katalog/{slug}', CarDetail::class)->name('car.detail');
 
-// Dashboard (requires login)
-Route::get('/dashboard', UserDashboard::class)->name('dashboard')->middleware('auth');
+// User Section (requires login)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profil', \App\Livewire\UserProfile::class)->name('user.profile');
+    Route::get('/ganti-password', \App\Livewire\UserPassword::class)->name('user.password');
+    Route::get('/riwayat-booking', \App\Livewire\UserBookings::class)->name('user.bookings');
+    Route::get('/mobil-disukai', \App\Livewire\UserWishlist::class)->name('user.wishlist');
+});
 
 // Logout with redirect to Home
 Route::post('/logout', function () {
@@ -34,6 +39,15 @@ Route::post('/logout', function () {
     request()->session()->regenerateToken();
     return redirect('/');
 })->name('logout');
+
+// Auth Socialite
+Route::get('/auth/google', [App\Http\Controllers\Auth\SocialiteController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [App\Http\Controllers\Auth\SocialiteController::class, 'callback'])->name('google.callback');
+
+// FAQ / Help Center
+Route::get('/pusat-bantuan', function () {
+    return view('pages.faq');
+})->name('faq');
 
 // Route Auth untuk redirect jika diperlukan (Laravel requirement untuk middleware auth)
 Route::get('/login', function () {

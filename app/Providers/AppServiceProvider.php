@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Gate::before(function ($user, $ability) {
+            return $user->hasRole('super_admin') ? true : null;
+        });
+
         \Illuminate\Pagination\Paginator::useTailwind();
 
         \Filament\Support\Facades\FilamentView::registerRenderHook(
